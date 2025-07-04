@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:code.visualstudio.com)"
+      "WebFetch(domain:code.visualstudio.com)",
+      "Bash(dotnet build:*)",
+      "Bash(chmod:*)"
     ],
     "deny": []
   }
