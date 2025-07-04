@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a proof-of-concept project demonstrating bidirectional messaging between NServiceBus and Dapr services. The project contains parallel implementations of an order processing system using both messaging frameworks.
 
+**Goal Architecture**: Enable direct communication between NServiceBus and Dapr services, allowing messages to flow bidirectionally across both messaging systems. This would allow organizations to gradually migrate from NServiceBus to Dapr or run hybrid architectures where both systems coexist and interoperate.
+
 ## Build Commands
 
 ```bash
@@ -66,6 +68,12 @@ Message flow: checkout → publishes to "orders" topic (Redis) → order-process
 1. **Message Contracts**: NServiceBus uses strongly-typed ICommand/IEvent interfaces; Dapr uses JSON payloads
 2. **Message Handling**: NServiceBus uses message handlers; Dapr uses HTTP endpoints with topic subscriptions
 3. **Infrastructure**: NServiceBus configures transport directly; Dapr abstracts via components (Redis for pub/sub)
+
+### Integration Points (Goal)
+The POC aims to establish bidirectional communication patterns:
+- **NServiceBus → Dapr**: NServiceBus services publishing events that Dapr services can subscribe to
+- **Dapr → NServiceBus**: Dapr services publishing events that NServiceBus handlers can process
+- **Bridge Component**: Potential adapter service to translate between NServiceBus message formats and Dapr pub/sub topics
 
 ## Development Notes
 
