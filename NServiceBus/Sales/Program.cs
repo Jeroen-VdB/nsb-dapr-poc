@@ -1,6 +1,8 @@
 using System;
 using Microsoft.Extensions.Hosting;
 using NServiceBus;
+using Dapr.Client;
+using Microsoft.Extensions.DependencyInjection;
 
 Console.Title = "Sales";
 
@@ -29,6 +31,14 @@ var metrics = endpointConfiguration.EnableMetrics();
 metrics.SendMetricDataToServiceControl("Particular.Monitoring", TimeSpan.FromMilliseconds(500));
 
 builder.UseNServiceBus(endpointConfiguration);
+
+// Configure Dapr client for publishing to Dapr pub/sub
+builder.Services.AddSingleton<DaprClient>(serviceProvider =>
+{
+    var daprClientBuilder = new DaprClientBuilder();
+    daprClientBuilder.UseHttpEndpoint("http://localhost:3500"); // Default Dapr HTTP port
+    return daprClientBuilder.Build();
+});
 
 var app = builder.Build();
 
