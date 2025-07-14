@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:code.visualstudio.com)",
       "Bash(dotnet build:*)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(dotnet add package:*)"
     ],
     "deny": []
   }

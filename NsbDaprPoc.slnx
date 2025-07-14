@@ -1,13 +1,5 @@
 <Solution>
-  <Folder Name="/Dapr/">
-    <Project Path="Dapr/checkout/checkout.csproj" />
-    <Project Path="Dapr/order-processor/order-processor.csproj" />
-  </Folder>
-  <Folder Name="/NServiceBus/">
-    <Project Path="NServiceBus/Billing/Billing.csproj" />
-    <Project Path="NServiceBus/ClientUI/ClientUI.csproj" />
-    <Project Path="NServiceBus/Messages/Messages.csproj" />
-    <Project Path="NServiceBus/PlatformLauncher/PlatformLauncher.csproj" />
-    <Project Path="NServiceBus/Sales/Sales.csproj" />
-  </Folder>
+  <Project Path="NativeSender/NativeSender.csproj" />
+  <Project Path="Receiver/Receiver.csproj" />
+  <Project Path="Shared/Shared.csproj" />
 </Solution>
