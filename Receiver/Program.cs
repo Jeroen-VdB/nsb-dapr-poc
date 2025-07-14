@@ -26,9 +26,6 @@ if (string.IsNullOrWhiteSpace(connectionString))
 var transport = new AzureServiceBusTransport(connectionString, TopicTopology.Default);
 endpointConfiguration.UseTransport(transport);
 
-
-Console.WriteLine("Press any key, the application is starting");
-Console.ReadKey();
 Console.WriteLine("Starting...");
 
 builder.UseNServiceBus(endpointConfiguration);

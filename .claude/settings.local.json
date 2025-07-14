@@ -4,7 +4,8 @@
       "WebFetch(domain:code.visualstudio.com)",
       "Bash(dotnet build:*)",
       "Bash(chmod:*)",
-      "Bash(dotnet add package:*)"
+      "Bash(dotnet add package:*)",
+      "Bash(mkdir:*)"
     ],
     "deny": []
   }
