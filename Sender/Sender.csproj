@@ -8,6 +8,6 @@
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.*" />
+    <PackageReference Include="Dapr.Client" Version="1.*" />
   </ItemGroup>
 </Project>
