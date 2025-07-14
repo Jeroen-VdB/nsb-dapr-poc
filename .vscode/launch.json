@@ -2,11 +2,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "NativeSender",
+      "name": "Sender",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/NativeSender/bin/Debug/net8.0/NativeSender.dll",
+      "program": "${workspaceFolder}/Sender/bin/Debug/net8.0/Sender.dll",
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "envFile": "${workspaceFolder}/.env",
@@ -38,7 +38,7 @@
     {
       "name": "Run All",
       "configurations": [
-        "NativeSender",
+        "Sender",
         "Receiver"
       ]
     }

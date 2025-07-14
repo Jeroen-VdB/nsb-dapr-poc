@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="NativeSender/NativeSender.csproj" />
+  <Project Path="Sender/Sender.csproj" />
   <Project Path="Receiver/Receiver.csproj" />
   <Project Path="Shared/Shared.csproj" />
 </Solution>
