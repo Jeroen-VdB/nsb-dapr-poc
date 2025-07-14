@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using Dapr.Client;
 
 Console.Title = "Sender";
@@ -8,18 +9,23 @@ Console.Title = "Sender";
 const string pubSubName = "servicebus-pubsub";
 const string topicName = "Samples.ASB.NativeIntegration";
 
-// Create DaprClient
-var daprClient = new DaprClientBuilder().Build();
+// Configure JSON serialization to use PascalCase for NServiceBus compatibility
+var jsonOptions = new JsonSerializerOptions
+{
+    PropertyNamingPolicy = null // null means use PascalCase (default .NET behavior)
+};
 
-#region SerializedMessage
+// Create DaprClient with PascalCase JSON serialization
+var daprClient = new DaprClientBuilder()
+    .UseJsonSerializationOptions(jsonOptions)
+    .Build();
+    
 
 var nativeMessage = new NativeMessage
 {
     Content = "Hello from Dapr sender",
     SentOnUtc = DateTime.UtcNow
 };
-
-#endregion
 
 // Create metadata for NServiceBus compatibility
 var metadata = new Dictionary<string, string>

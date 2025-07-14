@@ -7,7 +7,7 @@ spec:
   version: v1
   metadata:
   - name: connectionString
-    value: "REPLACE-ME" # TODO Load from environment variable
+    value: "REPLACE-ME"
   - name: maxRetries
     value: "3"
   - name: maxRetryDelay
