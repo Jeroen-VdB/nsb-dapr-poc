@@ -12,5 +12,3 @@ spec:
     value: "3"
   - name: maxRetryDelay
     value: "5s"
-  - name: disableEntityManagement
-    value: "false" # Allow Dapr to create topics/queues if needed

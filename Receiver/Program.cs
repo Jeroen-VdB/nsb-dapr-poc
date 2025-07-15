@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using NServiceBus;
 
@@ -7,14 +6,10 @@ Console.Title = "NativeIntegration";
 
 var builder = Host.CreateApplicationBuilder(args);
 
-#region EndpointName
-
 var endpointConfiguration = new EndpointConfiguration("Samples.ASB.NativeIntegration");
 
-#endregion
-
 endpointConfiguration.EnableInstallers();
-endpointConfiguration.UseSerialization<SystemJsonSerializer>();
+endpointConfiguration.UseSerialization<CloudEventsSerializerDefinition>();
 endpointConfiguration.Conventions().DefiningMessagesAs(type => type.Name == "NativeMessage");
 
 var connectionString = Environment.GetEnvironmentVariable("AzureServiceBus_ConnectionString");
