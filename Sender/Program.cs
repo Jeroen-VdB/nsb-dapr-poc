@@ -9,15 +9,8 @@ Console.Title = "Sender";
 const string pubSubName = "servicebus-pubsub";
 const string topicName = "Samples.ASB.NativeIntegration";
 
-// Configure JSON serialization to use PascalCase for NServiceBus compatibility
-var jsonOptions = new JsonSerializerOptions
-{
-    PropertyNamingPolicy = null // null means use PascalCase (default .NET behavior)
-};
-
 // Create DaprClient with PascalCase JSON serialization
 var daprClient = new DaprClientBuilder()
-    .UseJsonSerializationOptions(jsonOptions)
     .Build();
     
 
@@ -34,10 +27,8 @@ var metadata = new Dictionary<string, string>
     ["NServiceBus.EnclosedMessageTypes"] = typeof(NativeMessage).FullName,
     #endregion
     ["NServiceBus.MessageId"] = Guid.NewGuid().ToString(),
-    ["rawPayload"] = "true" // Indicate that this is a raw payload message
 };
 
-// Publish message using Dapr with raw payload (CloudEvents disabled)
 await daprClient.PublishEventAsync(pubSubName, topicName, nativeMessage, metadata);
 
 Console.WriteLine($"Native message sent via Dapr on {nativeMessage.SentOnUtc} UTC");
